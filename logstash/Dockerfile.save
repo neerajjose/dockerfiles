@@ -1,0 +1,16 @@
+#Download the base image Ubuntu 16.04
+FROM ubuntu:16.04
+
+#Update Software repo
+RUN apt-get update
+
+#Installing filebeat 5.2
+RUN apt-get install -y curl openjdk-8-jre
+RUN curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.1.2.deb
+RUN dpkg -i logstash-5.1.2.deb
+RUN rm logstash-5.1.2.deb
+
+COPY logstash.yml /etc/filebeat/filebeat.yml
+COPY run.sh /opt/
+RUN chmod +x /opt/run.sh
+CMD  /opt/run.sh
