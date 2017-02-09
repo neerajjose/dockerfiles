@@ -6,11 +6,7 @@ RUN apt-get update
 
 #Installing filebeat 5.2
 RUN apt-get install -y curl
-RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.1.2-amd64.deb
-RUN dpkg -i filebeat-5.1.2-amd64.deb
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.2.0-linux-x86_64.tar.gz
+RUN tar -xvzf filebeat-5.2.0-linux-x86_64.tar.gz
 
-COPY filebeat.yml /etc/filebeat/filebeat.yml
-COPY run.sh /opt/
-RUN chmod +x /opt/run.sh
-
-CMD /opt/run.sh
+CMD /opt/conf/run.sh
