@@ -1,3 +1,4 @@
+~~~~
 java -jar swarm-client.jar -help
  -autoDiscoveryAddress VAL      : Use this address for udp-based auto-discovery
                                   (default 255.255.255.255)
@@ -40,6 +41,6 @@ java -jar swarm-client.jar -help
  -username VAL                  : The Jenkins username for authentication
  -t (--toolLocation)            : A tool location to be defined on this slave.
 
-
+~~~~
 
 Taken from https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin
