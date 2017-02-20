@@ -1,2 +1,3 @@
-java -jar /swarm-client-2.2-jar-with-dependencies.jar -master http://52.56.137.186:8080 -username "neeraj" -password "password" -name "Slave"
+java -jar /swarm-client-2.2-jar-with-dependencies.jar -master http://$MASTER_IP:$MASTER_PORT -username $MASTER_USER -password $MASTER_PASSWORD -name $SLAVE_NAME
+
 

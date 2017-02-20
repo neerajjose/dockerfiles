@@ -1,4 +1,8 @@
 ~~~~
+Run Command : 
+
+docker run -d -e "MASTER_IP=52.56.166.119" -e "MASTER_PORT=8080" -e "MASTER_USER=neeraj" -e "MASTER_PASSWORD=password" -e "SLAVE_NAME=slave" nj-slave
+
 java -jar swarm-client.jar -help
  -autoDiscoveryAddress VAL      : Use this address for udp-based auto-discovery
                                   (default 255.255.255.255)
