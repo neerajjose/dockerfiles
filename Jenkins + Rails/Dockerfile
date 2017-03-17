@@ -123,4 +123,5 @@ RUN chown -R jenkins /var/jenkins_home
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
 # expose normal web port and slave port for jenkins
 EXPOSE 8000 50000
-CMD ["/etc/init.d/jenkins","start"]
+COPY jenkins.sh /usr/local/bin/jenkins.sh
+CMD ["/bin/bash", "--", "/usr/local/bin/jenkins.sh"]
