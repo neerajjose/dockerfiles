@@ -66,7 +66,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   software-properties-common \
   zip
 
-
 #install java
 RUN add-apt-repository ppa:webupd8team/java && apt-get update
 
@@ -78,7 +77,6 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 # Install mysql client (no server)
 RUN apt-get install -yq mysql-client libmysqlclient-dev
-
 
 # Jenkins is run with user `jenkins`, uid = 1000
 # If you bind mount a volume from the host or a data container,
@@ -93,8 +91,6 @@ RUN curl curl -#LO https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key ad
     echo 'deb http://pkg.jenkins.io/debian-stable binary/' > /etc/apt/sources.list.d/jenkins.list && \
     apt-get update && \
     apt-get install -y jenkins
-
-
 
 USER root
 
@@ -118,10 +114,9 @@ RUN /bin/bash -lc  "gem install bundler --no-doc --no-ri"
 USER root
 RUN chown -R jenkins /var/jenkins_home
 
-
 # slim down image
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
 # expose normal web port and slave port for jenkins
 EXPOSE 8000 50000
-COPY jenkins.sh /usr/local/bin/jenkins.sh
-CMD ["/bin/bash", "--", "/usr/local/bin/jenkins.sh"]
+
+CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
